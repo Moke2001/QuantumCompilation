@@ -4,7 +4,7 @@ cu_decompose(c_1:第一控制位,c_2:第二控制位,target:目标位)  --->  re
 result：量子门序列
 """
 
-from QuantumCircuit.Tool.three_unitary import *
+from QuantumCircuit.Usage.three_unitary import *
 
 
 def cu_decompose(U,control,target):  # control是控制位，target是目标位，U是作用效果

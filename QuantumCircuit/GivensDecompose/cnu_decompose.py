@@ -5,7 +5,7 @@ result：分解结果，是一个通用门序列
 """
 
 from QuantumCircuit.GivensDecompose.cnnot_decompose import *
-from QuantumCircuit.Tool.hermite import *
+from QuantumCircuit.Usage.hermite import *
 
 
 def cnu_decompose(cu_vector, U):  # cu_vector表示了各个位置的地位，U是作用的效果

@@ -5,7 +5,7 @@ V：U的平方因子
 """
 
 from Tool.Binary import *
-from BaseGate import *
+from Tool.BaseGate import *
 import numpy as np
 
 

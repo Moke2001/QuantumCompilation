@@ -45,6 +45,11 @@ def gray_code(n:int, i:int, j:int):
                         break  #跳出循环
 
                 break  # 跳出循环
+    else:
+        for w in range(i_bin.n):
+            if i_bin.vec[w] != j_bin.vec[w]:  # w就是旋转对应的量子比特
+                w_0 = w
+                break  # 跳出循环
 
     return [code_vector,w_0]  # 返回得到的Gray Code序列
 

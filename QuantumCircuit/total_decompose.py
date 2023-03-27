@@ -26,4 +26,4 @@ def total_decompose(gate):
 if __name__ == '__main__':
     result_test = total_decompose(Test)  # 输出结果
     print(result_test)
-    output_operator(result_test)
+    output_operator(result_test,2)

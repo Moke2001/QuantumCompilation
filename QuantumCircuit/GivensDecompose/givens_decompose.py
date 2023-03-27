@@ -6,7 +6,7 @@ result：量子门序列
 
 from QuantumCircuit.GivensDecompose.general_cnnot import *
 from QuantumCircuit.GivensDecompose.general_cnu import *
-from QuantumCircuit.Tool.gray_code import *
+from QuantumCircuit.Usage.gray_code import *
 
 
 def givens_decompose(givens:np.array,i:int,j:int):

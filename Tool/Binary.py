@@ -12,34 +12,24 @@ class Binary:
 
     ### 构造函数 ###
     def __init__(self, argument, n):
-        try:
-            if isinstance(argument, list):
-                self.n = len(argument)  # 二进制串的长度
-                self.vec = argument  # 二进制串的表示
-                moment = 0
-                for i in range(self.n):
-                    moment = moment + (2 ** i) * argument[self.n - i - 1]
-                self.value = moment  # 二进制串对应的十进制数
-            elif isinstance(argument, int):
-                binary_str = bin(argument)[2:]  # 将十进制数转换为二进制字符串，去掉前缀"0b"
-                bin_array = [int(x) for x in binary_str]  # 将二进制字符串转换为01数组
-                self.vec = bin_array  # 二进制串的表示
-                self.n = len(self.vec)  # 二进制串的长度
-                self.value = argument  # 二进制串对应的十进制数
-            else:
-                raise ValueError("输入的参数有误1")  # 如果输入参数有误，则抛出异常信息
-        except ValueError as e:
-            print(e)  # 打印异常信息
+        if isinstance(argument, list):
+            self.n = len(argument)  # 二进制串的长度
+            self.vec = argument  # 二进制串的表示
+            moment = 0
+            for i in range(self.n):
+                moment = moment + (2 ** i) * argument[self.n - i - 1]
+            self.value = moment  # 二进制串对应的十进制数
+        elif isinstance(argument, int):
+            binary_str = bin(argument)[2:]  # 将十进制数转换为二进制字符串，去掉前缀"0b"
+            bin_array = [int(x) for x in binary_str]  # 将二进制字符串转换为01数组
+            self.vec = bin_array  # 二进制串的表示
+            self.n = len(self.vec)  # 二进制串的长度
+            self.value = argument  # 二进制串对应的十进制数
 
         ## 如果位数不够，在前面补齐零
-        try:
-            if n > self.n:
-                self.vec = ([0] * (n - self.n)) + self.vec
-                self.n = n
-            else:
-                raise ValueError("输入的参数有误2")  # 如果输入参数有误，则抛出异常信息
-        except ValueError as e:
-            pass  # 不做处理
+        if n > self.n:
+            self.vec = ([0] * (n - self.n)) + self.vec
+            self.n = n
 
     ## 重载加法运算符
     def __add__(self, x):

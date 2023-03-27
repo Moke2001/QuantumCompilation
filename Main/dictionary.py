@@ -60,7 +60,7 @@ def dictionary(gate_name,vec,qc):
         ## 全局相位门
         elif gate_name=='I':
             theta=vec[1]
-            qc.global_phase = theta  # 以弧度表示的旋转角度
+            qc.global_phase = qc.global_phase*theta  # 以弧度表示的旋转角度
 
         ## 如果输入门不在集合中，则抛出异常信息
         else:

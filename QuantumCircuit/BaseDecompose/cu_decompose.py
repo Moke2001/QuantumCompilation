@@ -1,14 +1,23 @@
-###-------------------- 将一个受控U门分解 --------------------###
-## 输入一个受控U门，将它分解为若干CNOT门，或者CZ门的序列
-from QuantumCircuit.BaseDecompose.single_decompose import *
+"""
+函数：将一个CU门完全分解
+cu_decompose(c_1:第一控制位,c_2:第二控制位,target:目标位)  --->  result
+result：量子门序列
+"""
+
 from QuantumCircuit.Tool.three_unitary import *
 
 
-def cu_decompose(cu):
-    [[j,i],U]=cu  # j是控制位，i是目标位，U是作用效果
-    [A,B,C]=three_unitary(U)  # 将门分解为A,B,C三个门
-    result= A+[['CX', [j, i]]]+B+['CX', [j, i]]+C
+def cu_decompose(U,control,target):  # control是控制位，target是目标位，U是作用效果
+    [A,B,C,D]=three_unitary(U,target)  # 将门分解为A,B,C三个门
+    result= A+[['CX', [control, target]]]+B+['CX', [control, target]]+C+D
     return result
+
+
+## 用于测试结果
+if __name__ == '__main__':
+    result_test = cu_decompose(H,0,1)  # 输出结果
+    print(result_test)
+    main(result_test)
 
 
 

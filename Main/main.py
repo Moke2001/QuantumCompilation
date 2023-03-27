@@ -8,13 +8,10 @@ from Tool.BaseGate import Test
 
 def main(gate_vector):
     ## 将门序列输入到量子线路中
-    qc = QuantumCircuit(3, 3)  # 定义量子线路的量子比特与经典比特个数
+    qc = QuantumCircuit(1, 1)  # 定义量子线路的量子比特与经典比特个数
     for i in range(len(gate_vector)):
         [gate_name, vec] = gate_vector[i]
-        [s_1,s_2,s_3] = dictionary(gate_name)
-        eval(s_1)
-        eval(s_2)
-        eval(s_3)
+        dictionary(gate_name,vec,qc)
 
     ## 将矩阵作为表格输出到图片中
     matrix = Operator(qc).data

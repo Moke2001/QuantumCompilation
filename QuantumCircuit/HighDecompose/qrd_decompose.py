@@ -2,7 +2,7 @@
 函数：用QRD算法分解量子门，得到一系列Givens矩阵
 qrd_decompose(gate:某个矩阵)  --->  [gate_vector,gate_0]
 gate_vector=[Givens矩阵,[i,j]]  (i<j)
-gate_0：分解的结果，用于验证分解成功
+gate_0：分解结果，用于验证分解成功
 """
 
 from Tool.BaseGate import *

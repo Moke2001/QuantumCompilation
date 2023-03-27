@@ -1,31 +1,31 @@
 """
 函数：将CNNOT门完全分解
-cnnot_decompose(cu_vector:表征地位的数组)  --->  result
+cnnot_decompose(cnot_vector:表征地位的数组)  --->  result
 result：分解结果，是一个通用门序列
 """
 
 from QuantumCircuit.BaseDecompose.toffoli_decompose import *
 
 
-def cnnot_decompose(cu_vector):  # cu_vector表示了各个位置的地位
+def cnnot_decompose(cnot_vector):  # cu_vector表示了各个位置的地位
 
     ## 1是控制位，2是目标位，-1是无关位
     V = 1 / (1 + 1j) * np.array([1, 1j], [1j, 1])  # 控制门
-    moment = cu_vector.copy()  # 复制地位向量
+    moment = cnot_vector.copy()  # 复制地位向量
     num = 0  # 控制位的个数
     result = []  # 结果储存在result里面
 
     ## 计算控制位的个数
-    for i in range(len(cu_vector)):
-        if cu_vector[i] == 0:
+    for i in range(len(cnot_vector)):
+        if cnot_vector[i] == 0:
             num = num + 1
 
     ## 第一层循环寻找目标位，找到就break
-    for target in range(len(cu_vector)):
+    for target in range(len(cnot_vector)):
         if moment[target] == 2:
 
             ## 第二层循环寻找控制位，找到也break
-            for control in range(len(cu_vector)):
+            for control in range(len(cnot_vector)):
                 if moment[control] == 1:
 
                     ## 递归处理
@@ -36,7 +36,7 @@ def cnnot_decompose(cu_vector):  # cu_vector表示了各个位置的地位
                     if num == 2:
 
                         ## 找到下一个控制位
-                        for k in range(control, len(cu_vector)):
+                        for k in range(control, len(cnot_vector)):
                             if moment[k] == 1:
                                 result = cu_decompose(V,control,target) + toffoli_decompose(control, k, target) + cu_decompose(V.conj().T,control,target) + toffoli_decompose(control, k, target)
 
@@ -53,7 +53,7 @@ def cnnot_decompose(cu_vector):  # cu_vector表示了各个位置的地位
 
 ## 用于测试结果
 if __name__ == '__main__':
-    result_test = cnnot_decompose([1,1,1,2,1])  # 输出结果
+    result_test = cnnot_decompose([1,-1,1,2,1])  # 输出结果
     print(result_test)  # 打印结果
-    main(result_test)
+    output_operator(result_test,5)
 

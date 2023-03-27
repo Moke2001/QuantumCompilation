@@ -1,47 +1,71 @@
-###-------------------- 字典函数 --------------------###
-## 通过识别门的名字，执行相应的语句
-from qiskit import QuantumCircuit
+"""
+函数：通过识别门的名字，执行相应的语句
+"""
 
 
 def dictionary(gate_name,vec,qc):
+
     try:
-        if gate_name == 'H':  # Hadamard门
+
+        ## Hadamard门
+        if gate_name == 'H':
             num=vec[0]
             qc.h(num)
-        elif gate_name == 'X':  # Pauli-X门
+
+        ## Pauli-X门
+        elif gate_name == 'X':
             num=vec[0]
             qc.x(num)
-        elif gate_name == 'Y':  # Pauli-Y门
+
+        # Pauli-Y门
+        elif gate_name == 'Y':
             num=vec[0]
             qc.y(num)
-        elif gate_name == 'Z':  # Pauli-Z门
+
+        ## Pauli-Z门
+        elif gate_name == 'Z':
             num=vec[0]
             qc.z(num)
-        elif gate_name == 'RX':  # RX旋转门
+
+        ## RX旋转门
+        elif gate_name == 'RX':
             num=vec[0]
             theta=vec[1]
             qc.rx(theta,num)
-        elif gate_name == 'RY':  # RY旋转门
+
+        ## RY旋转门
+        elif gate_name == 'RY':
             num=vec[0]
             theta=vec[1]
             qc.ry(theta,num)
-        elif gate_name == 'RZ':  # RZ旋转门
+
+        ## RZ旋转门
+        elif gate_name == 'RZ':
             num=vec[0]
             theta=vec[1]
             qc.rz(theta,num)
-        elif gate_name == 'CZ':  # 受控Z旋转门
+
+        ## 受控Z旋转门
+        elif gate_name == 'CZ':
             control=vec[0]
             target=vec[1]
             qc.cz(control,target)
-        elif gate_name == 'CX':  # 受控非门
+
+        ## 受控非门
+        elif gate_name == 'CX':
             control=vec[0]
             target=vec[1]
             qc.cx(control,target)
-        elif gate_name=='I':  # 全局相位门
-            num=vec[0]
+
+        ## 全局相位门
+        elif gate_name=='I':
             theta=vec[1]
             qc.global_phase = theta  # 以弧度表示的旋转角度
+
+        ## 如果输入门不在集合中，则抛出异常信息
         else:
-            raise ValueError("输入的门不合法")  # 如果输入门不在集合中，则抛出异常信息
+            raise ValueError("输入的门不合法")
+
+    ## 打印异常信息
     except ValueError as e:
-        print(e)  # 打印异常信息
+        print(e)

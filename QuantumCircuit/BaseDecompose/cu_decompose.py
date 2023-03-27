@@ -17,7 +17,7 @@ def cu_decompose(U,control,target):  # control是控制位，target是目标位�
 if __name__ == '__main__':
     result_test = cu_decompose(H,0,1)  # 输出结果
     print(result_test)
-    main(result_test)
+    output_operator(result_test,2)
 
 
 

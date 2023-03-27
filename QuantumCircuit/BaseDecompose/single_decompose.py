@@ -45,4 +45,4 @@ def single_decompose(U,num):
 if __name__ == '__main__':
     result_test = single_decompose(H,0)  # 输出结果
     print(result_test)  # 打印结果
-    main(result_test)
+    output_operator(result_test,1)

@@ -29,4 +29,4 @@ def three_unitary(U,num):
 if __name__ == '__main__':
     [A_test,B_test,C_test,D_test] = three_unitary(H,0)  # 输出结果
     print([A_test,B_test,C_test])  # 打印结果
-    main(A_test+[['X', [0]]]+B_test+[['X', [0]]]+C_test+D_test)
+    output_operator(A_test + [['X', [0]]] + B_test + [['X', [0]]] + C_test + D_test)

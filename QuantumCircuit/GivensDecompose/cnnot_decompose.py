@@ -10,7 +10,7 @@ from QuantumCircuit.BaseDecompose.toffoli_decompose import *
 def cnnot_decompose(cnot_vector):  # cu_vector表示了各个位置的地位
 
     ## 1是控制位，2是目标位，-1是无关位
-    V = 1 / (1 + 1j) * np.array([1, 1j], [1j, 1])  # 控制门
+    V = 1 / (1 + 1j) * np.array([[1, 1j], [1j, 1]])  # 控制门
     moment = cnot_vector.copy()  # 复制地位向量
     num = 0  # 控制位的个数
     result = []  # 结果储存在result里面

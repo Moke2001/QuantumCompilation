@@ -9,12 +9,12 @@ from Tool.BaseGate import *
 from Tool.Binary import *
 
 
-def gray_code(n:int, i:int, j:int):
+def gray_code(n:int, i_0:int, j_0:int):
 
     ## 准备工作
     global w_0
-    i_bin = Binary(i, int(np.log2(n)))  # 基矢|i>的对应二进制串
-    j_bin = Binary(j, int(np.log2(n)))  # 基矢|j>的对应二进制串
+    i_bin = Binary(i_0, int(np.log2(n)))  # 基矢|i>的对应二进制串
+    j_bin = Binary(j_0, int(np.log2(n)))  # 基矢|j>的对应二进制串
     code_vector = []  # 用于保存输出的Gray Code
     num = 0  # 用于循环计数
 

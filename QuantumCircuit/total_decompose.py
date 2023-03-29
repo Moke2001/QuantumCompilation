@@ -17,7 +17,8 @@ def total_decompose(gate):
     ## 分解每一个Givens矩阵
     for i in range(len(givens_vector)):
         [givens, [i, j]]=givens_vector[i]
-        result=result+givens_decompose(givens, i, j)
+        if i!=-1 and j!=-1:
+            result=result+givens_decompose(givens, i, j)
 
     return result  # 输出分解的结果
 

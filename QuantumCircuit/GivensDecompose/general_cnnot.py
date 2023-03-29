@@ -16,7 +16,7 @@ def general_cnnot(cnot_vector):
     ## 寻找0控制位
     for i in range(len(cnot_vector)):
         if moment[i]==0:
-            result.append(['X',i])
+            result.append(['X',[i]])
             moment[i]=1
 
     result=result+cnnot_decompose(moment) ## 作用一般的CNNOT门
@@ -24,7 +24,7 @@ def general_cnnot(cnot_vector):
     ## 将X反写在0控制位qubits上
     for i in range(len(cnot_vector)):
         if cnot_vector[i]==0:
-            result.append(['X',i])
+            result.append(['X',[i]])
 
     return result  # 返回结果
 

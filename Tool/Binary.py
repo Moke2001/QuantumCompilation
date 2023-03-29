@@ -66,5 +66,5 @@ class Binary:
 
 
 if __name__ == "__main__":
-    x = Binary([0, 1, 0, 1], 5)
-    print(x)
+    x_test = Binary([0, 1, 0, 1], 5)
+    print(x_test)

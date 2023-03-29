@@ -6,8 +6,8 @@ output_operator(gate_vector:矩阵序列,n:量子比特的个数)  --->  plt.sho
 from qiskit import QuantumCircuit
 from qiskit.quantum_info import Operator
 import matplotlib.pyplot as plt
-from Main.dictionary import dictionary
-from Tool.BaseGate import Test
+from QiskitInterface.dictionary import dictionary
+from QiskitInterface.matrix_show import matrix_show
 
 
 def output_operator(gate_vector,n):
@@ -21,12 +21,8 @@ def output_operator(gate_vector,n):
 
     ## 将矩阵作为表格输出到图片中
     matrix = Operator(qc).data
-    fig, ax = plt.subplots(figsize=(15, 6))
-    ax.axis('off')
-    tb = ax.table(cellText=matrix, loc='center', cellLoc='center')
-    tb.auto_set_font_size(False)
-    tb.set_fontsize(8)
-    plt.show()
+    matrix_show(matrix)
+
 
 
 ## 用于测试结果

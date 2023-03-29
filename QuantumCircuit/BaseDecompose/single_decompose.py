@@ -5,7 +5,7 @@ result：量子门序列
 """
 
 from Tool.BaseGate import *
-from Main.operator import *
+from QiskitInterface.operator import *
 
 
 def single_decompose(U,num):

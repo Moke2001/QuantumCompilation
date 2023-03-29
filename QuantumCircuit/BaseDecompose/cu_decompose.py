@@ -9,7 +9,7 @@ from QuantumCircuit.Usage.three_unitary import *
 
 def cu_decompose(U,control,target):  # control是控制位，target是目标位，U是作用效果
     [A,B,C,D]=three_unitary(U,target)  # 将门分解为A,B,C三个门
-    result= A+[['CX', [control, target]]]+B+['CX', [control, target]]+C+D
+    result= A+[['CX', [control, target]]]+B+[['CX', [control, target]]]+C+D
     return result
 
 

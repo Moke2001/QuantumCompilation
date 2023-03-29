@@ -69,3 +69,7 @@ def dictionary(gate_name,vec,qc):
     ## 打印异常信息
     except ValueError as e:
         print(e)
+
+
+if __name__=="__main__":
+    pass

@@ -34,7 +34,6 @@ def qrd_decompose(gate: np.array):
 
             ## 如果一个位置上已经近似为0，那么跳过该元
             if np.abs(gate_0[j_0][i_0]) <= 0.0001:  # 设定精确度
-                gate_vector.insert(0, [G, [-1, -1]])
                 continue
 
             ## 将计算得到的Givens矩阵的矩阵元大小赋予相应位次

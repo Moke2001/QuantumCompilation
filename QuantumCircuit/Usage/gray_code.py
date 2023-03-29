@@ -22,7 +22,7 @@ def gray_code(n:int, i_0:int, j_0:int):
     for k in range(i_bin.n):
         if i_bin.vec[k] != j_bin.vec[k]:
             num = num + 1  # 如果某一位上不同则num加1
-        num_0=num
+    num_0=num
 
     ## 如果基矢之间不为一个相差位，那么进行SWAP化
     if num > 1:
@@ -32,7 +32,8 @@ def gray_code(n:int, i_0:int, j_0:int):
         for k in range(i_bin.n):
             if i_bin.vec[i_bin.n-1-k] != j_bin.vec[i_bin.n-1-k]:
                 i_bin.change(i_bin.n-1-k)
-                code_vector.append([i_bin.vec.copy(), k])
+                code_vector[-1][1]=k
+                code_vector.append([i_bin.vec.copy(), -1])
                 num = num - 1
 
             ## 如果只剩下一个相差位，那么就停止

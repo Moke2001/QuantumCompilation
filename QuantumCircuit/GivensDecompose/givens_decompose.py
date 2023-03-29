@@ -12,13 +12,14 @@ from QuantumCircuit.Usage.gray_code import *
 def givens_decompose(givens:np.array,i_0:int,j_0:int):
 
     ## 准备工作
+    global flag
     n=givens.shape[0]  # Givens矩阵的维度数
     [code_vector,target]=gray_code(n,i_0,j_0)  # 给出两个作用元连接的Gray Code，调用了函数gray_code()
     U=np.array([[givens[i_0][i_0],givens[i_0][j_0]],[givens[j_0][i_0],givens[j_0][j_0]]])  # 作用效果矩阵，因此要求矩阵从小向大对齐
     result=[]  # 存储分解的门序列结果
 
     ## 处理Gray Code
-    for k in range(len(code_vector)):
+    for k in range(0,len(code_vector)):
 
         ## U门作用前作用由Gray Code决定作用CNNOT门
         [moment,invert]=code_vector[k]
@@ -40,6 +41,6 @@ def givens_decompose(givens:np.array,i_0:int,j_0:int):
 
 ## 用于测试结果
 if __name__ == '__main__':
-    result_test = givens_decompose(givens_test,1,3)  # 输出结果
+    result_test = givens_decompose(givens_test,0,3)  # 输出结果
     print(result_test,2)
 

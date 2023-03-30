@@ -30,8 +30,8 @@ def gray_code(n:int, i_0:int, j_0:int):
 
         ## 调整较小的基矢
         for k in range(i_bin.n):
-            if i_bin.vec[i_bin.n-1-k] != j_bin.vec[i_bin.n-1-k]:
-                i_bin.change(i_bin.n-1-k)
+            if i_bin.vec[k] != j_bin.vec[k]:
+                i_bin.change(k)
                 code_vector[-1][1]=k
                 code_vector.append([i_bin.vec.copy(), -1])
                 num = num - 1
@@ -47,6 +47,7 @@ def gray_code(n:int, i_0:int, j_0:int):
 
                 break  # 跳出循环
     else:
+        code_vector.append([i_bin.vec.copy(), -1])  # 先将起始的二进制串保留
         for w in range(i_bin.n):
             if i_bin.vec[w] != j_bin.vec[w]:  # w就是旋转对应的量子比特
                 w_0 = w

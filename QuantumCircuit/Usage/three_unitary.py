@@ -20,13 +20,13 @@ def three_unitary(U, target,control):
     A=[['RY', [target, theta / 2]], ['RZ', [target, alpha]]]
     B=[['RZ', [target, (-beta - alpha) / 2]], ['RY', [target, -theta / 2]]]
     C=[['RZ', [target, (-alpha + beta) / 2]]]
-    E=[['RZ',[control,(alpha + beta) / 2+delta]]]
+    E=[['RZ',[control,delta+(alpha+beta)/2]]]
 
     return [A,B,C,E]  # 返回结果
 
 
 ## 用于测试结果
 if __name__ == '__main__':
-    [A_test,B_test,C_test,D_test] = three_unitary(H,0,1)  # 输出结果
+    [A_test,B_test,C_test,E_test] = three_unitary(H,0,1)  # 输出结果
     print([A_test,B_test,C_test])  # 打印结果
     output_operator(C_test+[['X',[0]]]+B_test+[['X',[0]]]+A_test,1)

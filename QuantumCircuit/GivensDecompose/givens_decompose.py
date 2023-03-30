@@ -32,7 +32,7 @@ def givens_decompose(givens:np.array,i_0:int,j_0:int):
             result = result + general_cnnot(moment)  ## 调用函数general_cnnot()
 
     ## U门作用后将之前的CNNOT门反向
-    if len(code_vector)>0:
+    if len(code_vector)>1:
         for w in range(flag):
             result.append(result[flag-w-1])  # 反向收集量子门
 

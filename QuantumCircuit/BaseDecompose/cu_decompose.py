@@ -15,9 +15,10 @@ def cu_decompose(U,control,target):  # control是控制位，target是目标位�
 
 ## 用于测试结果
 if __name__ == '__main__':
-    result_test = cu_decompose(H,1,0)  # 输出结果
+    ts=np.array([[1/np.sqrt(2),-1/np.sqrt(2)],[1/np.sqrt(2),1/np.sqrt(2)]])
+    result_test = cu_decompose(ts,1,0)  # 输出结果
     print(result_test)
-    output_operator(result_test,3)
+    output_operator(result_test,2)
 
 
 

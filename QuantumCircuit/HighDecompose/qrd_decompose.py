@@ -46,9 +46,9 @@ def qrd_decompose(gate: np.array):
 
             ## 设定返回格式，确保i<j
             if k_0 > j_0:
-                gate_vector.append([np.linalg.inv(G), [j_0, k_0]])
+                gate_vector.insert(0,[np.linalg.inv(G), [j_0, k_0]])
             else:
-                gate_vector.append([np.linalg.inv(G), [k_0, j_0]])
+                gate_vector.insert(0,[np.linalg.inv(G), [k_0, j_0]])
 
     return [gate_vector, gate_0]  # 返回分解的结果
 

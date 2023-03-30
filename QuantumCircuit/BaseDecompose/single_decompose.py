@@ -75,9 +75,38 @@ def single_decompose(U,num):
     ## 正常情况
     else:
         theta = 2 * np.arctan(np.abs(a) / np.abs(c))
-        alpha = np.arcsin(c2) - np.arcsin(a2)
-        beta = np.arcsin(b2) - np.arcsin(a2) - np.pi
-        delta = 0.5 * (-np.arcsin(b2) + np.arcsin(c2) - np.pi)
+
+        ## a的分类讨论：
+        if a2==0:
+            if a1>0:
+                wa=0
+            if a1<0:
+                wa=np.pi
+        else:
+            wa=np.arcsin(a2/np.cos(theta/2))
+
+        ## c的分类讨论：
+        if c2 == 0:
+            if c1 > 0:
+                wc = 0
+            if c1 <0:
+                wc = np.pi
+        else:
+            wc = np.arcsin(c2 / np.sin(theta / 2))
+
+        ## d的分类讨论：
+        if d2 == 0:
+            if d1 >0:
+                wd = 0
+            if d1 <0:
+                wd = np.pi
+        else:
+            wd = np.arcsin(d2 / np.cos(theta / 2))
+
+        ## 计算结果
+        alpha = wc-wa
+        beta = wd-wc
+        delta = (wd+wa)/2
 
     delta=delta-alpha/2-beta/2
 
@@ -86,7 +115,7 @@ def single_decompose(U,num):
 
 ## 用于测试结果
 if __name__ == '__main__':
-    cache=Z
+    cache=H
     result_test = single_decompose(cache,0)  # 输出结果
     print(result_test)  # 打印结果
     output_operator(result_test,1)

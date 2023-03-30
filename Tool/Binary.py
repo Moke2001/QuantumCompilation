@@ -17,7 +17,7 @@ class Binary:
             self.vec = argument  # 二进制串的表示
             moment = 0
             for i in range(self.n):
-                moment = moment + (2 ** i) * argument[self.n - i - 1]
+                moment = moment + (2 ** i) * argument[i]
             self.value = moment  # 二进制串对应的十进制数
         elif isinstance(argument, int):
             binary_str = bin(argument)[2:]  # 将十进制数转换为二进制字符串，去掉前缀"0b"
@@ -30,6 +30,10 @@ class Binary:
         if n > self.n:
             self.vec = ([0] * (n - self.n)) + self.vec
             self.n = n
+
+        ## 输入整数类型时需要颠倒顺序
+        if isinstance(argument,int):
+            self.vec = self.vec[::-1]
 
     ## 重载加法运算符
     def __add__(self, x):

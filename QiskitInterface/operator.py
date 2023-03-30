@@ -25,6 +25,7 @@ def output_operator(gate_vector,n):
 
 
 
+
 ## 用于测试结果
 if __name__ == "__main__":
     pass

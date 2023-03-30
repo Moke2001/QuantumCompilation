@@ -7,26 +7,26 @@ A,B,C：相应的三个量子门
 from QuantumCircuit.BaseDecompose.single_decompose import *
 
 
-def three_unitary(U,num):
+def three_unitary(U, target,control):
 
     ## 将相应的参数提取出来
-    [beta,theta,alpha,delta]=single_decompose(U,num)
+    [beta,theta,alpha,delta]=single_decompose(U, target)
     delta = delta[1][1]
     alpha = alpha[1][1]
     theta = theta[1][1]
     beta = beta[1][1]
 
     ## 将参数赋值给A,B,C
-    A=[['RZ',[num,beta]],['RY',[num,theta/2]]]
-    B=[['RY',[num,-theta/2]],['RZ',[num,(-beta-alpha) / 2]]]
-    C=[['RZ', [num,(alpha-beta) / 2]]]
-    D=[['I', [num,delta]]]
+    A=[['RY', [target, theta / 2]], ['RZ', [target, alpha]]]
+    B=[['RZ', [target, (-beta - alpha) / 2]], ['RY', [target, -theta / 2]]]
+    C=[['RZ', [target, (-alpha + beta) / 2]]]
+    E=[['RZ',[control,(alpha + beta) / 2+delta]]]
 
-    return [A,B,C,D]  # 返回结果
+    return [A,B,C,E]  # 返回结果
 
 
 ## 用于测试结果
 if __name__ == '__main__':
-    [A_test,B_test,C_test,D_test] = three_unitary(H,0)  # 输出结果
+    [A_test,B_test,C_test,D_test] = three_unitary(H,0,1)  # 输出结果
     print([A_test,B_test,C_test])  # 打印结果
-    output_operator(A_test + [['X', [0]]] + B_test + [['X', [0]]] + C_test + D_test)
+    output_operator(C_test+[['X',[0]]]+B_test+[['X',[0]]]+A_test,1)

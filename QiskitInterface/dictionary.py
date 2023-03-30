@@ -2,6 +2,8 @@
 函数：通过识别门的名字，执行相应的语句
 """
 
+import numpy as np
+
 
 def dictionary(gate_name,vec,qc):
 
@@ -44,6 +46,10 @@ def dictionary(gate_name,vec,qc):
             num=vec[0]
             theta=vec[1]
             qc.rz(theta,num)
+            if qc.global_phase+theta/2>2*np.pi:
+                qc.global_phase=qc.global_phase+theta/2-2*np.pi
+            else:
+                qc.global_phase=qc.global_phase+theta/2
 
         ## 受控Z旋转门
         elif gate_name == 'CZ':
@@ -60,7 +66,10 @@ def dictionary(gate_name,vec,qc):
         ## 全局相位门
         elif gate_name=='I':
             theta=vec[1]
-            qc.global_phase = qc.global_phase*theta  # 以弧度表示的旋转角度
+            if qc.global_phase + theta > 2 * np.pi:
+                qc.global_phase = qc.global_phase + theta - 2*np.pi
+            else:
+                qc.global_phase = qc.global_phase + theta
 
         ## 如果输入门不在集合中，则抛出异常信息
         else:

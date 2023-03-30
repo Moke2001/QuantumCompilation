@@ -42,5 +42,5 @@ def givens_decompose(givens:np.array,i_0:int,j_0:int):
 ## 用于测试结果
 if __name__ == '__main__':
     result_test = givens_decompose(givens_test,0,3)  # 输出结果
-    print(result_test,2)
+    output_operator(result_test,2)
 
